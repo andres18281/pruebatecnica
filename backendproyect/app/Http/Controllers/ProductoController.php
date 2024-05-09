@@ -4,16 +4,17 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Services\ProductoService;
+use App\Http\Requests\StoreProductoRequest;
 class ProductoController extends Controller
 {
-    protected $productoService;
+
 
     public function __construct(ProductoService $productoService)
     {
         $this->productoService = $productoService;
     }
 
-    public function store(Request $request)
+    public function store(StoreProductoRequest $request)
     {
         // Validar la solicitud utilizando una clase Request
 
@@ -48,7 +49,7 @@ class ProductoController extends Controller
         return response()->json($user);
     }
 
-    public function update(Request $request, $id)
+    public function update(StoreProductoRequest $request, $id)
     {
         // Validar los datos de la solicitud si es necesario
 

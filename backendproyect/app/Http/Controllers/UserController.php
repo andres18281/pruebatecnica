@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Services\UserService;
+use App\Http\Requests\StorePersonRequest;
 class UserController extends Controller
 {
     protected $userService;
@@ -15,7 +16,7 @@ class UserController extends Controller
 
     
 
-    public function store(Request $request)
+    public function store(StorePersonRequest $request)
     {
         // Validar la solicitud utilizando una clase Request
 
@@ -50,7 +51,7 @@ class UserController extends Controller
         return response()->json($user);
     }
 
-    public function update(Request $request, $id)
+    public function update(StorePersonRequest $request, $id)
     {
         // Validar los datos de la solicitud si es necesario
 

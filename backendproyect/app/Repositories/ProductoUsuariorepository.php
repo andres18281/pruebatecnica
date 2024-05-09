@@ -48,6 +48,21 @@ class ProductoUsuarioRepository
         return $productoUsuario->delete();
     }
 
+    public function getAllUsuariosRelacionadosConProducto($id)
+    {
+        // Utilizamos la relación definida en el modelo Producto
+        $producto = Producto::findOrFail($id);
+        return $producto->usuarios()->select('users.id', 'users.name', 'productousuario.id as idrela')->get();
+    }
+
+    public function getAllProductosRelacionadosConUsuario($id)
+    {
+        // Utilizamos la relación definida en el modelo User
+        $user = User::findOrFail($id);
+        return $user->productos()->select('productos.id', 'productos.nombreproducto', 'productousuario.id as idrela')->get();
+    }
+
+    /*
 
     public function getAllUsuariosRelacionadosConProducto($id)
     {
@@ -65,7 +80,7 @@ class ProductoUsuarioRepository
             ->where('users.id', $id) // Filtrar por el ID del usuario
             ->select('productos.id', 'productos.nombreproducto','productousuario.id as idrela')
             ->get();
-    }
+    }*/
     
     protected function findById($id)
     {
